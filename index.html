@@ -1,12 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Recognising A Number</title>
+  <style>  
+    body {
+      width: 100%;
+      height:100%;
+      margin: 0px auto;
+      background-color: black;
+    }
+    p {
+      font-family: tahoma;
+      font-size: 20px;
+      line-height: 10px;
+    }
+    span {
+      color: red;
+    }
+    #tools {
+      margin-top: 100px;
+      text-align: center;
+    }
+    .setUpTools {
+      width: 100px;
+      height: 50px;
+    }
+    #mainDiv {
+      margin-top: 50px;
+      text-align: center;
+    }
+    #compareCanvas {
+      width: 300px;
+      height: 400px;
+      background-color: white;
+    }
+    .setUpNumbers {
+      width: 50px;
+      height: 50px;
+    }
+    #learn {
+      width: 100px;
+      height: 50px;
+      margin-left: 50px;
+      font-size: 20px;
+      background-color: limegreen;
+    }
+  </style>
 </head>
-<body>
-  <p> hihi minh la hung day ne</p>
+<body onload = "start();">
+  <div id="tools">
+    <button class="setUpTools" style = "background-color: yellow;" onclick="need_run = 1;">
+      <p>Run</p>
+    </button>
+    <button class="setUpTools" style = "background-color: red;" onclick="need_clear = 1;">
+      <p>Clear</p>
+    </button>
+    <button class="setUpTools" onclick ="device = 1;">
+      <p>Pen</p>
+    </button>
+    <button class="setUpTools" onclick ="device = 0;">
+      <p>Eraser</p>
+    </button>
+    <button class="setUpTools" onclick ="">
+      <p>Learn</p>
+    </button>
+    </div>
+ 
+  <div id="mainDiv">
+    <canvas id="myCanvas" width="300px" height="400px"></canvas>
+    <canvas id="myCanvasPixel" width="300px" height="400px"></canvas>
+    <canvas id="compareCanvas" width="300px" height="400px"></canvas>
+  </div>
+
+  <div id="chooseNumber" style="text-align: center;">
+    <button class="setUpNumbers" onclick="corNumber = 0;">0</button>
+    <button class="setUpNumbers" onclick="corNumber = 1;">1</button>
+    <button class="setUpNumbers" onclick="corNumber = 2;">2</button>
+    <button class="setUpNumbers" onclick="corNumber = 3;">3</button>
+    <button class="setUpNumbers" onclick="corNumber = 4;">4</button>
+    <button class="setUpNumbers" onclick="corNumber = 5;">5</button>
+    <button class="setUpNumbers" onclick="corNumber = 6;">6</button>
+    <button class="setUpNumbers" onclick="corNumber = 7;">7</button>
+    <button class="setUpNumbers" onclick="corNumber = 8;">8</button>
+    <button class="setUpNumbers" onclick="corNumber = 9;">9</button>
+    <button id="learn" onclick="recognise.learn();">Learn</button>
+  </div>
+ 
 </body>
+<script src="recognise.js"></script>
+<script src="board.js"></script>
+<script src="script.js"></script>
 </html>
