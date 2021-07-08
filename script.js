@@ -17,7 +17,7 @@ const vertSqcnt = 8;
 const size_grid = width_2 / horiSqCnt;
 const maxPoint = 3;
 const minPoint = -3;
- 
+//hello I am Hung, its just a test.
 var animation, board, recognise;
 var lastMouse = {}, currentMouse = {}, can_draw = 0, device = 0, need_clear = 0, need_run = 0, bestNumber = 0, corNumber = 0;
 var grid = [], border = {}, numberData = {}, scoreNumbers = [];
