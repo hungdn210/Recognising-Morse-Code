@@ -10,7 +10,7 @@ const height_2 = canvasPixel.height;
 const width_2 = canvasPixel.width;
 const height_3 = canvasCompare.height;
 const width_3 = canvasCompare.width;
-const size_pen = 20; 
+const size_pen = 15; 
 const size_eraser = 20;
 const horiSqCnt = 6;
 const vertSqcnt = 8;
@@ -28,7 +28,7 @@ function draw() {
   if(device) {
     ctx.beginPath();
     ctx.lineWidth = size_pen;
-    ctx.strokeStyle ="#df3d38";
+    ctx.strokeStyle ="blue";
     ctx.lineCap = 'round';
     ctx.moveTo(lastMouse.x, lastMouse.y);
     ctx.lineTo(currentMouse.x, currentMouse.y);

@@ -142,7 +142,7 @@ function Recognise() {
     ctx2.strokeText(bestNumber, width_3 / 1.25, height_3 - 10);
     ctx2.stroke();
     scoreNumbers.sort((a, b) => a - b);          
-    console.log(scoreNumbers);
+    //console.log(scoreNumbers);
   }
   this.learn = () => { 
     if(corNumber != -1) {
@@ -157,4 +157,4 @@ function Recognise() {
       }
     }
   }
-}
+} 

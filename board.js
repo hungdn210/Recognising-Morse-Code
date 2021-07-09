@@ -1,7 +1,7 @@
 function Board() {
  
   this.update = () => {
-    //clean the left screen and set the value again
+    //clean the left screen and set the value again 
     if(need_clear) { 
       ctx.fillStyle = "white";
       ctx.fillRect(0, 0, width_1, height_1);
@@ -33,6 +33,7 @@ function Board() {
 
   this.drawBorder = () => {
     //draw red border on the first screen
+    ctx.strokeStyle = "red";
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(0, border.y.min);
@@ -101,6 +102,7 @@ function Board() {
         var pixel = ctx.getImageData(i, j, 1, 1);
         var data = pixel.data;
         if(data[1] != 255) {
+          console.log(data);
           border.x.min == width_1 ? border.x.min = i : 0;
           border.y.min > j ? border.y.min = j : 0;
           border.x.max = i;
