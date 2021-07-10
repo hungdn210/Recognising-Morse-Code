@@ -12,13 +12,17 @@ const height_3 = canvasCompare.height;
 const width_3 = canvasCompare.width;
 const size_pen = 15; 
 const size_eraser = 20;
+const color_pen = "blue";
+const color_border = "red";
+const rbgColorPen = [0, 0, 255, 255]; // blue 
 const horiSqCnt = 6;
 const vertSqcnt = 8;
 const size_grid = width_2 / horiSqCnt;
 const maxPoint = 3;
 const minPoint = -3;
+const amountNumber = 10;
 
-var animation, board, recognise;
+var board, recognise;
 var lastMouse = {}, currentMouse = {}, can_draw = 0, device = 0, need_clear = 0, need_run = 0, bestNumber = 0, corNumber = 0;
 var grid = [], border = {}, numberData = {}, scoreNumbers = [];
  
@@ -28,7 +32,7 @@ function draw() {
   if(device) {
     ctx.beginPath();
     ctx.lineWidth = size_pen;
-    ctx.strokeStyle ="blue";
+    ctx.strokeStyle = color_pen;
     ctx.lineCap = 'round';
     ctx.moveTo(lastMouse.x, lastMouse.y);
     ctx.lineTo(currentMouse.x, currentMouse.y);
@@ -90,12 +94,6 @@ function start() {
   recognise = new Recognise();
   board.drawBoard_2();
   recognise.data();
-  animation = requestAnimationFrame(runGame);
-}
- 
-function runGame() {
-  animation = requestAnimationFrame(runGame);
-  board.update();
 }
  
 canvas.addEventListener("mousemove", function (e) {

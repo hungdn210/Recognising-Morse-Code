@@ -1,9 +1,7 @@
 function Board() {
  
-  this.update = () => {
-    //clean the left screen and set the value again 
-    if(need_clear) { 
-      ctx.fillStyle = "white";
+  this.clear = () => {
+    ctx.fillStyle = "white";
       ctx.fillRect(0, 0, width_1, height_1);
       need_clear = 0;
       for(let i = 0; i < horiSqCnt; i++) {
@@ -11,10 +9,9 @@ function Board() {
           grid[i][j].seen = 0;
         }
       }
-    }
-    //draw the middle screen and third screen
-    if(need_run) {
-      corNumber = -1;
+  }
+  this.run = () => {
+    corNumber = -1;
       this.updateBoard_2();
       this.zoom();
       this.drawBorder();
@@ -22,7 +19,6 @@ function Board() {
       recognise.check();
       recognise.drawThirdBoard();
       need_run = 0;
-    }
   }
   
   this.zoom = () => {
@@ -33,7 +29,7 @@ function Board() {
 
   this.drawBorder = () => {
     //draw red border on the first screen
-    ctx.strokeStyle = "red";
+    ctx.strokeStyle = color_border;
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(0, border.y.min);
@@ -59,7 +55,8 @@ function Board() {
       for(let j = 0; j < height_1; j++) {
         var pixel = ctx1.getImageData(i, j, 1, 1);
         var data = pixel.data;
-        if(data[1] != 255) grid[Math.floor(i / size_grid)][Math.floor(j / size_grid)].seen =  1;
+        if(data[0] == rbgColorPen[0] && data[1] == rbgColorPen[1] && data[3] == rbgColorPen[3] && data[4] == rbgColorPen[4]) 
+          grid[Math.floor(i / size_grid)][Math.floor(j / size_grid)].seen =  1;
       }
     }
     //draw background 
@@ -101,8 +98,8 @@ function Board() {
       for(let j = 1; j < height_1; j++) {
         var pixel = ctx.getImageData(i, j, 1, 1);
         var data = pixel.data;
-        if(data[1] != 255) {
-          console.log(data);
+        if(data[0] == rbgColorPen[0] && data[1] == rbgColorPen[1] && data[3] == rbgColorPen[3] && data[4] == rbgColorPen[4]) {
+          //console.log(data);  
           border.x.min == width_1 ? border.x.min = i : 0;
           border.y.min > j ? border.y.min = j : 0;
           border.x.max = i;

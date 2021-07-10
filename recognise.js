@@ -106,10 +106,11 @@ function Recognise() {
   this.check = () => { 
     var curScore = 0, maxScore = 0, tempX = 0, tempY = 0;
     bestNumber = 0;
-    for(let i = 0; i <= 9; i++) {
-      scoreNumbers[i] = 0;
+    for(let i = 0; i < amountNumber; i++) {
+      scoreNumbers[i] = {};
     }
     //calculate the score of each number
+    var temp = 0;
     for(let num = 0; num <= 9; num++) {
       curScore = 0;
       for(let y = 0; y < vertSqcnt; y++) {
@@ -118,7 +119,8 @@ function Recognise() {
           grid[x][y].seen ? curScore += curData : curScore -= curData;
         }
       }
-      scoreNumbers[num] = curScore;
+      scoreNumbers[num].value = curScore;
+      scoreNumbers[num].number = num;
       if(maxScore < curScore) {
         maxScore = curScore;
         bestNumber = num;
@@ -126,6 +128,7 @@ function Recognise() {
     }
   }  
   this.drawThirdBoard = () => {
+    
     //clean the screen
     ctx2.beginPath();
     ctx2.fillStyle = "white";
@@ -133,16 +136,16 @@ function Recognise() {
     //draw score of 9 numbers
     ctx2.beginPath();
     ctx2.font = "20px Tahoma";
-    for(let i = 0; i <= 9; i++) {
-      ctx2.strokeText("number " + i + ":", 10, height_3 / 11 * (i + 1)- 10);
-      ctx2.strokeText(scoreNumbers[i] + "%", width_3 / 1.25, height_3 / 11 * (i + 1)- 10);
+    scoreNumbers.sort((a, b) => a.value - b.value);
+    console.log(scoreNumbers);
+    for(let i = 0; i < amountNumber; i++) {
+      ctx2.strokeText("number " + scoreNumbers[amountNumber - i - 1].number + ":", 10, height_3 / 11 * (i + 1)- 10);
+      ctx2.strokeText(scoreNumbers[amountNumber - i - 1].value + "%", width_3 / 1.25, height_3 / 11 * (i + 1)- 10);
     }
     //the most similar score
     ctx2.strokeText("The best number", 10, height_3 - 10);
     ctx2.strokeText(bestNumber, width_3 / 1.25, height_3 - 10);
     ctx2.stroke();
-    scoreNumbers.sort((a, b) => a - b);          
-    //console.log(scoreNumbers);
   }
   this.learn = () => { 
     if(corNumber != -1) {
